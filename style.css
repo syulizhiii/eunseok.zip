@@ -1,0 +1,159 @@
+/* 1. 載入自訂字體 */
+@font-face {
+  font-family: 'EunseokFont';
+  src: url('../css/fonts/Stars-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'KoreanFont';
+  src: url('../css/fonts/NanumNeuRisNeuRisCe.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'Eunseok1Font';
+  src: url('../css/fonts/RASCAL__.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 2. 全局初始化與 Body 置中 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #A2D2FF; /* 天藍色背景 */
+  overflow: hidden;
+  font-family: 'EunseokFont', sans-serif;
+  position: relative; /* 讓星星與 Credit 以全螢幕 Body 為基準定位 */
+}
+
+/* 3. 主內容置中容器 (採用絕對定位鎖定畫面最正中央) */
+.landing-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* 確保內容蓋在星星上方 */
+}
+
+/* 4. 手繪感黃色雲朵標題 */
+.cloud-header {
+  background-color: #FDFFB6;
+  border: 4px solid #70C1FF;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 15px 50px;
+  margin-bottom: 25px;
+  animation: floatCloud 3s ease-in-out infinite alternate;
+}
+
+.cloud-title {
+  font-family: 'Eunseok1Font', sans-serif;
+  font-size: 3.5rem;
+  color: #4A4A4A;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* 5. 石頭按鈕區域 */
+.stone-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* 修正：正確套用到 <img> 標籤或 class */
+.stone-wrapper img {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15));
+  animation: pulseStone 2s ease-in-out infinite alternate;
+}
+
+.stone-wrapper:hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.stone-wrapper:hover .click-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 韓文 헬로 */
+.hello-text {
+  font-family: 'KoreanFont', sans-serif;
+  margin-top: 15px;
+  font-size: 2.0rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 滑鼠懸停提示 */
+.click-hint {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+/* 6. 右下角 Credit */
+.credit {
+  position: absolute;
+  bottom: 20px;
+  right: 35px;
+  font-size: 1.4rem;
+  color: #ff6b81;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* 7. 星星全螢幕隨機散落定位 */
+.star {
+  position: absolute;
+  color: #FFF9A6;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  user-select: none;
+  z-index: 1;
+  animation: sparkle 1.5s infinite alternate ease-in-out;
+}
+
+.star1 { top: 12%; left: 15%; font-size: 2.2rem; animation-delay: 0s; }
+.star2 { top: 25%; right: 18%; font-size: 1.6rem; animation-delay: 0.5s; }
+.star3 { bottom: 22%; left: 12%; font-size: 1.8rem; animation-delay: 0.9s; }
+.star4 { bottom: 15%; right: 20%; font-size: 2.4rem; animation-delay: 0.3s; }
+
+/* ===== 動畫定義 (Keyframes) ===== */
+@keyframes floatCloud {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-12px); }
+}
+
+@keyframes pulseStone {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+@keyframes sparkle {
+  0% { opacity: 0.25; transform: scale(0.8) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+}
