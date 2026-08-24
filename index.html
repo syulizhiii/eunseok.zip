@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="forrEUNSEOK" />
   <title>E:UNSEOK</title>
+  <meta name="description" content="forrEUNSEOK" />
+  <meta property="og:description" content="forrEUNSEOK" />
   <link rel="icon" href="images/favicon.ico" type="image/png">
   <!-- 【修正 1】 檔案在 css 資料夾裡，所以要加上 css/ -->
   <link rel="stylesheet" href="css/style.css">
@@ -23,15 +24,53 @@
     <div class="cloud-header">
       <h1 class="cloud-title">EUNSEOK.zip</h1>
     </div>
-
-    <a href="main.html" class="stone-wrapper">
-      <img src="images/dol.png" alt="Eunseok Stone">
-      <span class="hello-text">헬로</span>
-    </a>
   </div>
+
+<div class="stone-wrapper" onclick="startUnzip()" style="cursor: pointer;">
+  <img src="images/dol.png" alt="Eunseok Stone">
+  <span class="hello-text">헬로</span>
+</div>
+
+<!-- 新增：解壓縮進度條（預設會先隱藏） -->
+<div id="progress-wrapper" style="display: none; margin: 20px auto; width: 200px; text-align: center;">
+  <div style="border: 2px solid #2b2b2b; background-color: #fff; border-radius: 10px; padding: 3px;">
+    <div id="progress-fill" style="width: 0%; height: 12px; background-color: #ffe66d; border-radius: 6px; transition: width 0.05s linear;"></div>
+  </div>
+  <p id="progress-text" style="font-size: 0.9rem; color: #2b2b2b; margin-top: 6px; font-weight: bold;">Unzipping... 0%</p>
+</div>
 
   <!-- 3. 右下角 credit 直接放 body 第一層（死死貼在右下角） -->
   <div class="credit">by syulizhiii</div>
 
+<script>
+let isUnzipping = false;
+
+function startUnzip() {
+  if (isUnzipping) return; // 防止重複點擊
+  isUnzipping = true;
+
+  // 顯示進度條
+  const progressWrapper = document.getElementById('progress-wrapper');
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  progressWrapper.style.display = 'block';
+
+  let progress = 0;
+  const timer = setInterval(() => {
+    progress += 2;
+    fill.style.width = progress + '%';
+    text.innerText = `Unzipping... ${progress}%`;
+
+    if (progress >= 100) {
+      clearInterval(timer);
+      text.innerText = "DONE!";
+      // 跑完後 0.4 秒順暢跳轉到 main.html
+      setTimeout(() => {
+        window.location.href = 'main.html';
+      }, 500);
+    }
+  }, 30);
+}
+</script>
 </body>
 </html>
