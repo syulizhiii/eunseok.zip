@@ -157,3 +157,26 @@ html, body {
   0% { opacity: 0.25; transform: scale(0.8) rotate(0deg); }
   100% { opacity: 1; transform: scale(1.2) rotate(20deg); }
 }
+
+.stone-container:hover .stone-img {
+  transform: scale(1.1) rotate(5deg);
+  transition: transform 0.2s ease;
+}
+
+/* 讓石頭區塊保持置中，不要撐滿整行 */
+.stone-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 讓 body 裡的所有東西垂直置中 */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}

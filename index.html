@@ -26,18 +26,19 @@
     </div>
   </div>
 
-<div class="stone-wrapper" onclick="startUnzip()" style="cursor: pointer;">
-  <img src="images/dol.png" alt="Eunseok Stone">
-  <span class="hello-text">헬로</span>
-</div>
-
-<!-- 新增：解壓縮進度條（預設會先隱藏） -->
-<div id="progress-wrapper" style="display: none; margin: 20px auto; width: 200px; text-align: center;">
-  <div style="border: 2px solid #2b2b2b; background-color: #fff; border-radius: 10px; padding: 3px;">
-    <div id="progress-fill" style="width: 0%; height: 12px; background-color: #ffe66d; border-radius: 6px; transition: width 0.05s linear;"></div>
+  <!-- 石頭點擊區 -->
+  <div class="stone-wrapper" onclick="startUnzip()">
+    <img src="images/dol.png" alt="Eunseok Stone">
+    <span class="hello-text">헬로</span>
   </div>
-  <p id="progress-text" style="font-size: 0.9rem; color: #2b2b2b; margin-top: 6px; font-weight: bold;">Unzipping... 0%</p>
-</div>
+
+  <!-- 解壓縮進度條（預設隱藏） -->
+  <div id="progress-wrapper" style="display: none; margin-top: 15px; width: 180px; text-align: center;">
+    <div style="border: 2px solid #2b2b2b; background-color: #fff; border-radius: 10px; padding: 2px;">
+      <div id="progress-fill" style="width: 0%; height: 10px; background-color: #ffe66d; border-radius: 5px; transition: width 0.05s linear;"></div>
+    </div>
+    <p id="progress-text" style="font-size: 0.85rem; color: #2b2b2b; margin-top: 5px; font-weight: bold;">Unzipping... 0%</p>
+  </div>
 
   <!-- 3. 右下角 credit 直接放 body 第一層（死死貼在右下角） -->
   <div class="credit">by syulizhiii</div>
