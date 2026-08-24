@@ -180,3 +180,33 @@ body {
   min-height: 100vh;
   margin: 0;
 }
+
+/* 確保畫面完全置中 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* 主容器：標題、石頭、進度條垂直排隊 */
+.main-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 石頭元件設定 */
+.stone-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.stone-wrapper:hover {
+  transform: scale(1.05);
+}

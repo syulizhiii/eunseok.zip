@@ -7,9 +7,7 @@
   <meta name="description" content="forrEUNSEOK" />
   <meta property="og:description" content="forrEUNSEOK" />
   <link rel="icon" href="images/favicon.ico" type="image/png">
-  <!-- 【修正 1】 檔案在 css 資料夾裡，所以要加上 css/ -->
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
@@ -19,28 +17,30 @@
   <div class="star star3">✦</div>
   <div class="star star4">✧</div>
 
-  <!-- 2. 中間的主要內容區塊（只放雲朵和石頭） -->
+  <!-- 2. 中間的主要內容區塊（把標題、石頭、進度條全部包在一起） -->
   <div class="landing-container">
+
     <div class="cloud-header">
       <h1 class="cloud-title">EUNSEOK.zip</h1>
     </div>
-  </div>
 
-  <!-- 石頭點擊區 -->
-  <div class="stone-wrapper" onclick="startUnzip()">
-    <img src="images/dol.png" alt="Eunseok Stone">
-    <span class="hello-text">헬로</span>
-  </div>
-
-  <!-- 解壓縮進度條（預設隱藏） -->
-  <div id="progress-wrapper" style="display: none; margin-top: 15px; width: 180px; text-align: center;">
-    <div style="border: 2px solid #2b2b2b; background-color: #fff; border-radius: 10px; padding: 2px;">
-      <div id="progress-fill" style="width: 0%; height: 10px; background-color: #ffe66d; border-radius: 5px; transition: width 0.05s linear;"></div>
+    <!-- 石頭點擊區（放回箱子裡） -->
+    <div class="stone-wrapper" onclick="startUnzip()" style="cursor: pointer;">
+      <img src="images/dol.png" alt="Eunseok Stone">
+      <span class="hello-text">헬로</span>
     </div>
-    <p id="progress-text" style="font-size: 0.85rem; color: #2b2b2b; margin-top: 5px; font-weight: bold;">Unzipping... 0%</p>
-  </div>
 
-  <!-- 3. 右下角 credit 直接放 body 第一層（死死貼在右下角） -->
+    <!-- 解壓縮進度條（放回箱子裡，在石頭正下方） -->
+    <div id="progress-wrapper" style="display: none; margin-top: 15px; width: 180px; text-align: center;">
+      <div style="border: 2px solid #2b2b2b; background-color: #fff; border-radius: 10px; padding: 2px;">
+        <div id="progress-fill" style="width: 0%; height: 10px; background-color: #ffe66d; border-radius: 5px; transition: width 0.05s linear;"></div>
+      </div>
+      <p id="progress-text" style="font-size: 0.85rem; color: #2b2b2b; margin-top: 5px; font-weight: bold;">Unzipping... 0%</p>
+    </div>
+
+  </div> <!-- landing-container 結束標籤移到這裡 -->
+
+  <!-- 3. 右下角 credit -->
   <div class="credit">by syulizhiii</div>
 
 <script>
@@ -65,7 +65,7 @@ function startUnzip() {
     if (progress >= 100) {
       clearInterval(timer);
       text.innerText = "DONE!";
-      // 跑完後 0.4 秒順暢跳轉到 main.html
+      // 跑完後 0.5 秒順暢跳轉到 main.html
       setTimeout(() => {
         window.location.href = 'main.html';
       }, 500);
