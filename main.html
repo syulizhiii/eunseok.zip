@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E:UNSEOK.zip - contents</title>
+  
+  <!-- 引入原本的 style.css (確保星星和背景色還在) -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* main.html 專用的復古視窗排版 */
+    
+    body {
+      /* 確保內容水平垂直置中 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* 復古視窗本體 */
+    .window-container {
+      background-color: #f1f1f1; /* 視窗底色 */
+      width: 90%;
+      max-width: 800px;
+      height: 70vh; /* 固定高度，內容多時可滾動 */
+      border: 3px solid #2b2b2b; /* 粗邊框 */
+      border-radius: 12px; /* 圓角 */
+      box-shadow: 6px 6px 0px rgba(0,0,0,0.2); /* 復古陰影 */
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* 確保內容不會超出邊框 */
+    }
+
+    /* 視窗頂部的藍色標題列 */
+    .window-header {
+      background-color: #a1c4fd; /* 跟背景一樣的藍色 */
+      padding: 10px 15px;
+      border-bottom: 3px solid #2b2b2b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .window-title {
+      color: #2b2b2b;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* 右上角的關閉/縮小按鈕 */
+    .window-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .win-btn {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid #2b2b2b;
+    }
+    .win-red { background-color: #ff5f57; }
+    .win-yellow { background-color: #ffbd2e; }
+    .win-green { background-color: #28c940; }
+
+    /* 視窗內容區域 (放資料夾的地方) */
+    .window-content {
+      padding: 30px;
+      flex-grow: 1; /* 佔滿剩餘高度 */
+      overflow-y: auto; /* 內容多時出現捲軸 */
+      background-color: #ffffff; /* 內容區域底色 */
+      
+      /* 資料夾排版 (格狀) */
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 自動依寬度排列 */
+      gap: 25px;
+      justify-items: center;
+      align-items: start;
+    }
+
+    /* --- 手繪黃色資料夾樣式 (用 CSS 製作) --- */
+    
+    .folder-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 100px;
+      transition: transform 0.1s ease;
+    }
+
+    .folder-wrapper:hover {
+      transform: scale(1.05); /* 滑鼠移上去微微放大 */
+    }
+
+    /* 資料夾圖示 (黃色) */
+    .folder-icon {
+      width: 70px;
+      height: 50px;
+      background-color: #ffe66d; /* 手繪黃色 */
+      border: 3px solid #2b2b2b;
+      border-radius: 5px 15px 5px 5px; /* 不規則圓角營造手繪感 */
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    /* 資料夾上面的小耳朵 */
+    .folder-icon::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 8px;
+      width: 30px;
+      height: 12px;
+      background-color: #ffe66d;
+      border: 3px solid #2b2b2b;
+      border-bottom: none; /* 底部沒有邊框 */
+      border-radius: 5px 5px 0 0;
+    }
+
+    /* 資料夾文字 (如：01_Profile) */
+    .folder-name {
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      text-align: center;
+      font-weight: bold;
+      word-wrap: break-word; /* 確保文字太長會斷行 */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 四個角落的裝飾星星 (沿用舊設定) -->
+  <div class="star star-1">✦</div>
+  <div class="star star-2">✧</div>
+  <div class="star star-3">✧</div>
+  <div class="star star-4">✦</div>
+
+  <!-- 主視窗容器 -->
+  <div class="window-container">
+    
+    <!-- 視窗頂部標題列 -->
+    <div class="window-header">
+      <h2 class="window-title">E:UNSEOK.zip contents</h2>
+      <div class="window-controls">
+        <div class="win-btn win-green"></div>
+        <div class="win-btn win-yellow"></div>
+        <div class="win-btn win-red"></div>
+      </div>
+    </div>
+
+    <!-- 視窗內容區域 (放四個資料夾) -->
+    <div class="window-content">
+
+      <!-- 資料夾 01 -->
+      <div class="folder-wrapper" onclick="openModal('profile')">
+        <div class="folder-icon"></div>
+        <span class="folder-name">01_Profile</span>
+      </div>
+
+      <!-- 資料夾 02 -->
+      <div class="folder-wrapper" onclick="openModal('gallery')">
+        <div class="folder-icon"></div>
+        <span class="folder-name">02_Gallery</span>
+      </div>
+
+      <!-- 資料夾 03 -->
+      <div class="folder-wrapper" onclick="openModal('video')">
+        <div class="folder-icon"></div>
+        <span class="folder-name">03_Stage</span>
+      </div>
+
+      <!-- 資料夾 04 -->
+      <div class="folder-wrapper" onclick="openModal('audio')">
+        <div class="folder-icon"></div>
+        <span class="folder-name">04_Audio.mp3</span>
+      </div>
+
+    </div> <!-- .window-content 結束 -->
+    
+  </div> <!-- .window-container 結束 -->
+
+  <!-- 右下角 credit (沿用舊設定) -->
+  <div class="footer-text">by syulizhiii</div>
+
+</body>
+</html>
