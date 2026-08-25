@@ -210,3 +210,11 @@ body {
 .stone-wrapper:hover {
   transform: scale(1.05);
 }
+
+.folder-name{
+  font-family: 'KoreanFont', sans-serif;
+  font-size: 3.5rem;
+  color: #4A4A4A;
+  letter-spacing: 2px;
+  line-height: 1;
+}
