@@ -211,18 +211,13 @@ body {
   transform: scale(1.05);
 }
 
-.window-content{
-  font-family: 'KoreanFont', sans-serif;
-  font-size: 3.5rem;
-  color: #4A4A4A;
-  letter-spacing: 2px;
-  line-height: 1;
+/* 修改資料夾名稱的字體 */
+.folder-name {
+  font-family: 'KoreanFont', sans-serif !important;
 }
 
-.window-title{
-  font-family: 'KoreanFont', sans-serif;
-  font-size: 3.5rem;
-  color: #4A4A4A;
-  letter-spacing: 2px;
-  line-height: 1;
+/* 修改視窗標題的字體 */
+.window-title {
+  font-family: 'KoreanFont', sans-serif !important;
+  font-size: 1.5rem; /* 建議微調大小，3.5rem 在標題列會太大 */
 }
