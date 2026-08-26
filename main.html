@@ -188,15 +188,15 @@
   <!-- 右下角 credit (沿用舊設定) -->
   <div class="credit">by syulizhiii</div>
 
-  <!-- 可拖拽的手繪風音樂視窗 -->
+  <!-- 獨立浮動音樂視窗 -->
 <div id="audio-modal" class="draggable-window" style="display: none;">
-  <!-- 視窗頂部（拖拽握把區） -->
+  <!-- 拖拽握把區 -->
   <div id="audio-modal-header" class="drag-header">
     <span class="modal-title">04_Audio.mp3</span>
     <button class="close-btn" onclick="closeModal('audio-modal')">✕</button>
   </div>
 
-  <!-- 視窗內容區 -->
+  <!-- 內容區 -->
   <div class="drag-body">
     <iframe 
       data-testid="embed-iframe" 
@@ -212,15 +212,18 @@
   </div>
 </div>
 
-  </div>
-</div>
-
 <!-- 控制 Modal 彈窗開啟與關閉的 JS -->
   <script>
   function openModal(type) {
     if (type === 'audio') {
       const modal = document.getElementById('audio-modal');
       modal.style.display = 'block';
+      
+      // 開啟時重置到中央
+      modal.style.top = '50%';
+      modal.style.left = '50%';
+      modal.style.transform = 'translate(-50%, -50%)';
+
       makeDraggable(modal, document.getElementById('audio-modal-header'));
     }
   }
@@ -229,18 +232,22 @@
     document.getElementById(modalId).style.display = 'none';
   }
 
-  // 滑鼠拖拽通用邏輯
   function makeDraggable(elmnt, header) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (header) {
       header.onmousedown = dragMouseDown;
-    } else {
-      elmnt.onmousedown = dragMouseDown;
     }
 
     function dragMouseDown(e) {
       e = e || window.event;
       e.preventDefault();
+      
+      // 清除中央對齊 translate，換算成絕對像素座標以利拖拽
+      const rect = elmnt.getBoundingClientRect();
+      elmnt.style.transform = 'none';
+      elmnt.style.top = rect.top + 'px';
+      elmnt.style.left = rect.left + 'px';
+
       pos3 = e.clientX;
       pos4 = e.clientY;
       document.onmouseup = closeDragElement;
@@ -264,6 +271,5 @@
     }
   }
 </script>
-</body>
 </body>
 </html>
