@@ -71,8 +71,8 @@ html, body {
 }
 
 .cloud-title {
-  font-family: 'enfont', sans-serif !important;
-  font-weight: normal !important;
+  font-family: 'KoreanFont', sans-serif !important;
+  font-weight: bold;
   font-size: 3.5rem;
   color: #4A4A4A;
   letter-spacing: 2px;
