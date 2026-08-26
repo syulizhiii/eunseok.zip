@@ -218,5 +218,24 @@
   </div>
 </div>
 
+<!-- 控制 Modal 彈窗開啟與關閉的 JS -->
+  <script>
+    function openModal(type) {
+      if (type === 'audio') {
+        const audioModal = document.getElementById('audio-modal');
+        if (audioModal) {
+          audioModal.style.display = 'flex';
+        }
+      }
+    }
+
+    function closeModal(modalId) {
+      const targetModal = document.getElementById(modalId);
+      if (targetModal) {
+        targetModal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
 </body>
 </html>
