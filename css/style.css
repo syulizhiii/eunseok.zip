@@ -14,7 +14,7 @@
 }
 
 @font-face {
-  font-family: 'Eunseok1Font';
+  font-family: 'EuFont';
   src: url('fonts/RASCAL___.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -68,7 +68,7 @@ html, body {
 }
 
 .cloud-title {
-  font-family: 'Eunseok1Font', sans-serif;
+  font-family: 'EuFont', sans-serif;
   font-size: 3.5rem;
   color: #4A4A4A;
   letter-spacing: 2px;
