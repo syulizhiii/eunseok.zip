@@ -79,6 +79,15 @@ html, body {
   line-height: 1;
 }
 
+.cloud-titlee{
+  font-family: 'enfont', sans-serif !important;
+  font-weight: bold;
+  font-size: 3.5rem;
+  color: #4A4A4A;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
 /* 5. 石頭按鈕區域 */
 .stone-wrapper {
   display: inline-flex;
