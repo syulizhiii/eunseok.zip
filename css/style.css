@@ -221,7 +221,7 @@ body {
 
 /* 修改資料夾名稱的字體 */
 .folder-name {
-  font-family: 'KoreanFont', sans-serif !important;
+  font-family: 'enfont', sans-serif !important;
 }
 
 /* 修改視窗標題的字體 */
