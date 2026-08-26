@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EUNSEOK.zip - contents</title>
   
-  <!-- 引入原本的 style.css (確保星星和背景色還在) -->
   <link rel="stylesheet" href="css/style.css">
   
   <style>
@@ -18,7 +17,7 @@
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      position: relative; /* 確保 fixed 視窗定位基準點乾淨 */
+      position: relative;
     }
 
     /* 復古視窗本體 */
@@ -134,19 +133,16 @@
       font-family: 'KoreanFont', sans-serif !important;
     }
 
-    /* --- 強制重寫獨立浮動音樂視窗 (解決爆框問題) --- */
+    /* --- 獨立浮動音樂視窗 (修正版：移除 top/left 的 !important) --- */
     .draggable-window {
-      position: fixed !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%);
-      width: 420px !important; /* 固定寬度封鎖 Spotify 擴張 */
-      box-sizing: border-box !important;
+      position: fixed;
+      width: 420px;
+      box-sizing: border-box;
       background-color: #fff6e5;
       border: 3px solid #2b2b2b;
       border-radius: 16px;
       box-shadow: 6px 6px 0px #2b2b2b;
-      z-index: 999999 !important;
+      z-index: 999999;
       overflow: hidden;
     }
 
@@ -191,18 +187,16 @@
     }
 
     .drag-body iframe {
-      width: 100% !important;
-      display: block !important;
+      width: 100%;
+      display: block;
       border: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- 主視窗容器 -->
   <div class="window-container">
     
-    <!-- 視窗頂部標題列 -->
     <div class="window-header">
       <h2 style="font-family: 'KoreanFont', sans-serif;
   font-size: 3.5rem;
@@ -217,49 +211,36 @@
       </div>
     </div>
 
-    <!-- 視窗內容區域 (放四個資料夾) -->
     <div class="window-content">
 
-      <!-- 資料夾 01 -->
       <div class="folder-wrapper" onclick="openModal('profile')">
         <div class="folder-icon"></div>
         <span class="folder-name">01_Profile</span>
       </div>
 
-      <!-- 資料夾 02 -->
       <div class="folder-wrapper" onclick="openModal('gallery')">
         <div class="folder-icon"></div>
         <span class="folder-name">02_Gallery</span>
       </div>
 
-      <!-- 資料夾 03 -->
       <div class="folder-wrapper" onclick="openModal('video')">
         <div class="folder-icon"></div>
         <span class="folder-name">03_Stage</span>
       </div>
 
-      <!-- 資料夾 04 -->
       <div class="folder-wrapper" onclick="openModal('audio')">
         <div class="folder-icon"></div>
         <span class="folder-name">04_Audio.mp3</span>
       </div>
 
-    </div> <!-- .window-content 結束 -->
-    
-  </div> <!-- .window-container 結束 -->
+    </div> </div> <div class="credit">by syulizhiii</div>
 
-  <!-- 右下角 credit -->
-  <div class="credit">by syulizhiii</div>
-
-  <!-- 獨立浮動音樂視窗 -->
   <div id="audio-modal" class="draggable-window" style="display: none;">
-    <!-- 拖拽握把區 -->
     <div id="audio-modal-header" class="drag-header">
       <span class="modal-title">🎵 04_Audio.mp3</span>
       <button class="close-btn" onclick="closeModal('audio-modal')">✕</button>
     </div>
 
-    <!-- 內容區 -->
     <div class="drag-body">
       <iframe 
         data-testid="embed-iframe" 
@@ -273,17 +254,18 @@
     </div>
   </div>
 
-  <!-- 控制 Modal 彈窗開啟與關閉的 JS -->
   <script>
     function openModal(type) {
       if (type === 'audio') {
         const modal = document.getElementById('audio-modal');
         modal.style.display = 'block';
         
-        // 重置為中央位置
-        modal.style.top = '50%';
-        modal.style.left = '50%';
-        modal.style.transform = 'translate(-50%, -50%)';
+        // 用 JS 動態計算精確的螢幕正中央位置 (不受 CSS 鎖死)
+        const modalWidth = 420;
+        const modalHeight = 440;
+        modal.style.top = Math.max(20, (window.innerHeight - modalHeight) / 2) + 'px';
+        modal.style.left = Math.max(20, (window.innerWidth - modalWidth) / 2) + 'px';
+        modal.style.transform = 'none';
 
         makeDraggable(modal, document.getElementById('audio-modal-header'));
       }
@@ -304,12 +286,6 @@
         e = e || window.event;
         e.preventDefault();
         
-        // 點擊拖拽時解除 CSS translate 置中限制，改以實際像素定位
-        const rect = elmnt.getBoundingClientRect();
-        elmnt.style.transform = 'none';
-        elmnt.style.top = rect.top + 'px';
-        elmnt.style.left = rect.left + 'px';
-
         pos3 = e.clientX;
         pos4 = e.clientY;
         
@@ -320,12 +296,16 @@
       function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
+
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+        // 取得當前真實 Viewport 座標並更新
+        const rect = elmnt.getBoundingClientRect();
+        elmnt.style.top = (rect.top - pos2) + "px";
+        elmnt.style.left = (rect.left - pos1) + "px";
       }
 
       function closeDragElement() {
