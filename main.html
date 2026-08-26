@@ -219,7 +219,7 @@
       const modal = document.getElementById('audio-modal');
       modal.style.display = 'block';
       
-      // 開啟時重置到中央
+      // 開啟時恢復預設置中
       modal.style.top = '50%';
       modal.style.left = '50%';
       modal.style.transform = 'translate(-50%, -50%)';
@@ -234,6 +234,7 @@
 
   function makeDraggable(elmnt, header) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    
     if (header) {
       header.onmousedown = dragMouseDown;
     }
@@ -242,7 +243,7 @@
       e = e || window.event;
       e.preventDefault();
       
-      // 清除中央對齊 translate，換算成絕對像素座標以利拖拽
+      // 關鍵修復：按下滑鼠瞬間取得當前位置，並清除 translate 鎖定
       const rect = elmnt.getBoundingClientRect();
       elmnt.style.transform = 'none';
       elmnt.style.top = rect.top + 'px';
@@ -250,6 +251,7 @@
 
       pos3 = e.clientX;
       pos4 = e.clientY;
+      
       document.onmouseup = closeDragElement;
       document.onmousemove = elementDrag;
     }
