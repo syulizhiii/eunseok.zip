@@ -20,6 +20,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'enlfont';
+  src: url('../eunseok.zip/css/fonts/ShineTypewriter.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
+}
+
 /* 2. 全局初始化與 Body 置中 */
 * {
   margin: 0;
