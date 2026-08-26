@@ -221,3 +221,73 @@ body {
   font-family: 'KoreanFont', sans-serif !important;
   font-size: 1.5rem; /* 建議微調大小，3.5rem 在標題列會太大 */
 }
+
+/* --- 音樂 Modal 彈窗樣式 --- */
+
+/* 半透明黑底遮罩（蓋住整個螢幕） */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  align-items: center;     /* 垂直置中 */
+  z-index: 999;            /* 確保蓋在最上層 */
+}
+
+/* 復古小視窗本體 */
+.modal-window {
+  background-color: #f1f1f1;
+  border: 3px solid #2b2b2b;
+  border-radius: 12px;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: popIn 0.2s ease-out; /* 彈出小動畫 */
+}
+
+/* 視窗頂部標題列 */
+.modal-header {
+  background-color: #ffe66d; /* 手繪黃色 */
+  padding: 8px 15px;
+  border-bottom: 3px solid #2b2b2b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-family: 'KoreanFont', sans-serif !important;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+/* 關閉按鈕 (✕) */
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #2b2b2b;
+  padding: 0 5px;
+  transition: transform 0.1s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.2); /* 滑鼠移上去微放大 */
+}
+
+/* 彈出視窗的小動畫 */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
