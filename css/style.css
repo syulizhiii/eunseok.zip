@@ -1,29 +1,29 @@
 /* 1. 載入自訂字體 */
+/* 1. 載入自訂字體 (路徑前面全部補上 ../) */
 @font-face {
   font-family: 'EunseokFont';
-  src: url('fonts/Stars-Regular.ttf') format('truetype');
+  src: url('../fonts/Stars-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'KoreanFont';
-  src: url('fonts/NanumNeuRisNeuRisCe.ttf') format('truetype');
+  src: url('../fonts/NanumNeuRisNeuRisCe.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'EuFont';
-  src: url('fonts/RASCAL___.TTF') format('truetype');
+  src: url('../fonts/RASCAL___.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-/* 你剛新增的新字體 (ShineTypewriter) */
 @font-face {
   font-family: 'enfont';
-  src: url('fonts/ShineTypewriter.ttf') format('truetype');
+  src: url('../fonts/ShineTypewriter.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
