@@ -68,7 +68,7 @@ html, body {
 }
 
 .cloud-title {
-  font-family: 'EuFont', sans-serif;
+  font-family: 'EuFont', sans-serif !important;
   font-size: 3.5rem;
   color: #4A4A4A;
   letter-spacing: 2px;
