@@ -1,23 +1,30 @@
 /* 1. 載入自訂字體 */
 @font-face {
   font-family: 'EunseokFont';
-  src: url('../css/fonts/Stars-Regular.ttf') format('truetype');
+  src: url('../eunseok.zip/css/fonts/Stars-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'KoreanFont';
-  src: url('../css/fonts/NanumNeuRisNeuRisCe.ttf') format('truetype');
+  src: url('../eunseok.zip/css/fonts/NanumNeuRisNeuRisCe.ttf') format('truetype');
   font-weight: normal;
   font-style: normal; 
 }
 
 @font-face {
   font-family: 'Eunseok1Font';
-  src: url('../css/fonts/RASCAL__.TTF') format('truetype');
+  src: url('../eunseok.zip/css/fonts/RASCAL__.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'enfont';
+  src: url('../eunseok.zip/css/fonts/ShineTypewriter.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
 }
 
 /* 2. 全局初始化與 Body 置中 */
