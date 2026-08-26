@@ -188,54 +188,82 @@
   <!-- 右下角 credit (沿用舊設定) -->
   <div class="credit">by syulizhiii</div>
 
-  <!-- 音樂播放器 Modal 彈窗 -->
-<div id="audio-modal" class="modal-overlay" style="display: none;">
-  <div class="modal-window" style="max-width: 600px; width: 90%;">
-    
-    <!-- 復古視窗頂部標題列 -->
-    <div class="modal-header">
-      <span class="modal-title">04_Audio.mp3</span>
-      <button class="close-btn" onclick="closeModal('audio-modal')">✕</button>
-    </div>
+  <!-- 可拖拽的手繪風音樂視窗 -->
+<div id="audio-modal" class="draggable-window" style="display: none;">
+  <!-- 視窗頂部（拖拽握把區） -->
+  <div id="audio-modal-header" class="drag-header">
+    <span class="modal-title">04_Audio.mp3</span>
+    <button class="close-btn" onclick="closeModal('audio-modal')">✕</button>
+  </div>
 
-    <!-- 彈窗內容區：放入你的新 Spotify 歌單 -->
-    <div class="modal-body" style="padding: 15px; background-color: #2b2b2b;">
-      <div class="spotify-wrapper">
-        <iframe 
-          data-testid="embed-iframe" 
-          style="border-radius:12px; display: block;" 
-          src="https://open.spotify.com/embed/playlist/2fmBlEztyZHoBzA8dbr6fk?utm_source=generator&si=8c6d4adc539a4b8a" 
-          width="100%" 
-          height="352" 
-          frameBorder="0" 
-          allowfullscreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
+  <!-- 視窗內容區 -->
+  <div class="drag-body">
+    <iframe 
+      data-testid="embed-iframe" 
+      style="border-radius:12px; display: block;" 
+      src="https://open.spotify.com/embed/playlist/2fmBlEztyZHoBzA8dbr6fk?utm_source=generator&si=8c6d4adc539a4b8a" 
+      width="100%" 
+      height="382" 
+      frameBorder="0" 
+      allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
 
   </div>
 </div>
 
 <!-- 控制 Modal 彈窗開啟與關閉的 JS -->
   <script>
-    function openModal(type) {
-      if (type === 'audio') {
-        const audioModal = document.getElementById('audio-modal');
-        if (audioModal) {
-          audioModal.style.display = 'flex';
-        }
-      }
+  function openModal(type) {
+    if (type === 'audio') {
+      const modal = document.getElementById('audio-modal');
+      modal.style.display = 'block';
+      makeDraggable(modal, document.getElementById('audio-modal-header'));
+    }
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // 滑鼠拖拽通用邏輯
+  function makeDraggable(elmnt, header) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (header) {
+      header.onmousedown = dragMouseDown;
+    } else {
+      elmnt.onmousedown = dragMouseDown;
     }
 
-    function closeModal(modalId) {
-      const targetModal = document.getElementById(modalId);
-      if (targetModal) {
-        targetModal.style.display = 'none';
-      }
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag;
     }
-  </script>
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+</script>
 </body>
 </body>
 </html>

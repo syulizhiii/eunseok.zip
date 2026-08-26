@@ -224,47 +224,45 @@ body {
 
 /* --- 音樂 Modal 彈窗樣式 --- */
 
-/* 半透明黑底遮罩（蓋住整個螢幕） */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
-  display: flex;
-  justify-content: center; /* 水平置中 */
-  align-items: center;     /* 垂直置中 */
-  z-index: 999;            /* 確保蓋在最上層 */
-}
-
-/* 復古小視窗本體 */
-.modal-window {
-  background-color: #f1f1f1;
+/* --- 浮動可拖拽視窗樣式 --- */
+.draggable-window {
+  position: absolute; /* 絕對定位，不擠壓主頁面 */
+  top: 15%;
+  left: 55%;
+  width: 420px;       /* 加寬至完美呈現歌單 */
+  background-color: #fff6e5; /* 溫和的奶黃手繪底色 */
   border: 3px solid #2b2b2b;
   border-radius: 12px;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 6px 6px 0px #2b2b2b; /* 復古手繪硬陰影 */
+  z-index: 1000;      /* 浮在最上層 */
   overflow: hidden;
-  animation: popIn 0.2s ease-out; /* 彈出小動畫 */
+  resize: both;       /* 支援右下角自由縮放 */
 }
 
-/* 視窗頂部標題列 */
-.modal-header {
-  background-color: #ffe66d; /* 手繪黃色 */
-  padding: 8px 15px;
+/* 拖拽頂部標題列 */
+.drag-header {
+  padding: 10px 15px;
+  cursor: move;       /* 鼠標顯示拖拽圖示 */
+  background-color: #ffe66d; /* 手繪黃 */
   border-bottom: 3px solid #2b2b2b;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;  /* 拖拽時避免選取文字 */
 }
 
 .modal-title {
   font-family: 'KoreanFont', sans-serif !important;
   font-weight: bold;
   color: #2b2b2b;
+  font-size: 1.1rem;
 }
 
-/* 關閉按鈕 (✕) */
+.drag-body {
+  padding: 12px;
+  background-color: #fff6e5;
+}
+
 .close-btn {
   background: transparent;
   border: none;
@@ -272,22 +270,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   color: #2b2b2b;
-  padding: 0 5px;
-  transition: transform 0.1s ease;
 }
-
 .close-btn:hover {
-  transform: scale(1.2); /* 滑鼠移上去微放大 */
-}
-
-/* 彈出視窗的小動畫 */
-@keyframes popIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  color: #ff5f57;
 }
