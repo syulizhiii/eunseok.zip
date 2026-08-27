@@ -37,7 +37,7 @@
 html, body {
   width: 100vw;
   height: 100vh;
-  background-color: #A2D2FF;
+  background-image: url('../images/bgg.png');
   overflow: hidden;
   font-family: 'EunseokFont', sans-serif;
   position: relative;
