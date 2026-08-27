@@ -37,14 +37,35 @@
 html, body {
   width: 100vw;
   height: 100vh;
-  background-image: url('../images/bgg.png');
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   font-family: 'EunseokFont', sans-serif;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+  /* 設定背景圖：用 contain 或 100% 100% 確保右下角兩隻不會被切掉 */
+  background-image: url('../images/bgg.png'); /* 👈 換成你的背景圖正確檔名與路徑 */
+  background-size: 100% 100%;               /* 強制 100% 顯示整張圖，兩隻娃娃絕對看得見 */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 讓原本 HTML CSS 畫的黃色雲朵變透明（因為背景圖上已經畫好雲朵了） */
+.cloud-header {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  animation: floatCloud 3s ease-in-out infinite alternate;
+}
+
+/* 標題字體維持居中 */
+.cloud-title {
+  font-family: 'EuFont', sans-serif !important;
+  font-weight: normal !important;
+  font-size: 3.5rem;
+  color: #4A4A4A;
+  letter-spacing: 2px;
+  line-height: 1;
 }
 
 /* 3. 主內容置中容器 */
