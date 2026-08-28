@@ -52,16 +52,19 @@ html, body {
 
 /* 讓原本 HTML CSS 畫的黃色雲朵變透明（因為背景圖上已經畫好雲朵了） */
 .cloud-header {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  background-color: #FDFFB6 !important; /* 溫馨手繪黃色 */
+  border: 3px solid #70C1FF !important;   /* 淺藍色邊框 */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; /* 不規則手繪圓角 */
+  padding: 12px 45px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   animation: floatCloud 3s ease-in-out infinite alternate;
 }
 
 /* 標題字體維持居中 */
 .cloud-title {
   font-family: 'EuFont', sans-serif !important;
-  font-weight: normal !important;
+  font-weight: bold !important;
   font-size: 3.5rem;
   color: #4A4A4A;
   letter-spacing: 2px;
