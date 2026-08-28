@@ -44,11 +44,23 @@ html, body {
   position: relative;
 
   /* 設定背景圖：用 contain 或 100% 100% 確保右下角兩隻不會被切掉 */
-  background-image: url('../images/bg1.jpg'); /* 👈 換成你的背景圖正確檔名與路徑 */
-  background-size: 100% 100%;               /* 強制 100% 顯示整張圖，兩隻娃娃絕對看得見 */
-  background-position: center;
-  background-repeat: no-repeat;
+  .bg-index{
+   background-image: url('../images/bg1.jpg'); /* 👈 換成你的背景圖正確檔名與路徑 */
+   background-size: 100% 100%;               /* 強制 100% 顯示整張圖，兩隻娃娃絕對看得見 */
+   background-position: center;
+   background-repeat: no-repeat;
+  }
+
+  .bg-main{
+   background-image: url('../images/bg2.jpg'); /* 👈 換成你的背景圖正確檔名與路徑 */
+   background-size: 100% 100%;               /* 強制 100% 顯示整張圖，兩隻娃娃絕對看得見 */
+   background-position: center;
+   background-repeat: no-repeat;
+  }
 }
+  
+
+
 
 /* 讓原本 HTML CSS 畫的黃色雲朵變透明（因為背景圖上已經畫好雲朵了） */
 .cloud-header {
@@ -173,6 +185,8 @@ html, body {
   0% { transform: scale(1); }
   100% { transform: scale(1.04); }
 }
+
+
 
 /* 修改資料夾與視窗字體 */
 .folder-name {

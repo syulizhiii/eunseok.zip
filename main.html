@@ -3,22 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EUNSEOK.zip - contents</title>
+  <title>E:UNSEOK</title>
   
   <link rel="stylesheet" href="css/style.css?v=2.0">
   
   <style>
     /* main.html 專用的復古視窗排版 */
-    
-    body {
-      /* 確保內容水平垂直置中 */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      position: relative;
-    }
 
     /* 復古視窗本體 */
     .window-container {
@@ -44,12 +34,13 @@
       align-items: center;
     }
 
+    /* 修正頂部藍條標題：使用藝術字體 EuFont */
     .window-title {
       color: #2b2b2b;
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.8rem;
       margin: 0;
-      font-family: 'KoreanFont', sans-serif !important;
+      font-family: 'EuFont', sans-serif !important;
+      font-weight: normal !important;
     }
 
     /* 右上角的關閉/縮小按鈕 */
@@ -133,7 +124,7 @@
       font-family: 'enfont', sans-serif !important;
     }
 
-    /* --- 獨立浮動音樂視窗 (修正版：移除 top/left 的 !important) --- */
+    /* --- 獨立浮動音樂視窗 --- */
     .draggable-window {
       position: fixed;
       width: 420px;
@@ -193,12 +184,12 @@
     }
   </style>
 </head>
-<body>
+<body class="bg-main">
 
   <div class="window-container">
     
     <div class="window-header">
-      <h2 class="cloud-titlee" style="font-size: 1.8rem; margin: 0;">EUNSEOK.zip/extracted</h2>
+      <h2 class="window-title">EUNSEOK.zip/extracted</h2>
       <div class="window-controls">
         <div class="win-btn win-green"></div>
         <div class="win-btn win-yellow"></div>
@@ -228,7 +219,10 @@
         <span class="folder-name">Radio</span>
       </div>
 
-    </div> </div> <div class="credit">by syulizhiii</div>
+    </div> 
+  </div> 
+
+  <div class="credit">by syulizhiii</div>
 
   <div id="audio-modal" class="draggable-window" style="display: none;">
     <div id="audio-modal-header" class="drag-header">
@@ -255,7 +249,6 @@
         const modal = document.getElementById('audio-modal');
         modal.style.display = 'block';
         
-        // 用 JS 動態計算精確的螢幕正中央位置 (不受 CSS 鎖死)
         const modalWidth = 420;
         const modalHeight = 440;
         modal.style.top = Math.max(20, (window.innerHeight - modalHeight) / 2) + 'px';
@@ -297,7 +290,6 @@
         pos3 = e.clientX;
         pos4 = e.clientY;
 
-        // 取得當前真實 Viewport 座標並更新
         const rect = elmnt.getBoundingClientRect();
         elmnt.style.top = (rect.top - pos2) + "px";
         elmnt.style.left = (rect.left - pos1) + "px";
