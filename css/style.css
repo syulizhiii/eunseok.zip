@@ -44,7 +44,7 @@ html, body {
   position: relative;
 
   /* 設定背景圖：用 contain 或 100% 100% 確保右下角兩隻不會被切掉 */
-  background-image: url('../images/bgg.png'); /* 👈 換成你的背景圖正確檔名與路徑 */
+  background-image: url('../images/bg.jpg'); /* 👈 換成你的背景圖正確檔名與路徑 */
   background-size: 100% 100%;               /* 強制 100% 顯示整張圖，兩隻娃娃絕對看得見 */
   background-position: center;
   background-repeat: no-repeat;
@@ -163,21 +163,6 @@ html, body {
   z-index: 2;
 }
 
-/* 7. 星星全螢幕定位 */
-.star {
-  position: absolute;
-  color: #FFF9A6;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-  user-select: none;
-  z-index: 1;
-  animation: sparkle 1.5s infinite alternate ease-in-out;
-}
-
-.star1 { top: 12%; left: 15%; font-size: 2.2rem; animation-delay: 0s; }
-.star2 { top: 25%; right: 18%; font-size: 1.6rem; animation-delay: 0.5s; }
-.star3 { bottom: 22%; left: 12%; font-size: 1.8rem; animation-delay: 0.9s; }
-.star4 { bottom: 15%; right: 20%; font-size: 2.4rem; animation-delay: 0.3s; }
-
 /* ===== 動畫定義 (Keyframes) ===== */
 @keyframes floatCloud {
   0% { transform: translateY(0px); }
@@ -187,11 +172,6 @@ html, body {
 @keyframes pulseStone {
   0% { transform: scale(1); }
   100% { transform: scale(1.04); }
-}
-
-@keyframes sparkle {
-  0% { opacity: 0.25; transform: scale(0.8) rotate(0deg); }
-  100% { opacity: 1; transform: scale(1.2) rotate(20deg); }
 }
 
 /* 修改資料夾與視窗字體 */
